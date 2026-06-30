@@ -9,3 +9,4 @@ datasets/acm_dblp_protocol/acm_dblp_protocol_client_close.json filter=lfs diff=l
 datasets/acm_dblp_protocol/acm_dblp_protocol_client_far.json filter=lfs diff=lfs merge=lfs -text
 datasets/acm_dblp_protocol/acm_dblp_protocol_metadata.txt filter=lfs diff=lfs merge=lfs -text
 datasets/acm_dblp_protocol/acm_dblp_protocol_server.json filter=lfs diff=lfs merge=lfs -text
+datasets/calibrations/acm_dblp_* filter=lfs diff=lfs merge=lfs -text
