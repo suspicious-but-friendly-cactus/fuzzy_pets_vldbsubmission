@@ -34,7 +34,6 @@ disco/mobile_psi_cpp/build-mac/droidCrypto/psi/cuckoofilter/libcuckoo.a
 disco/mobile_psi_cpp/build-mac/droidCrypto/psi/oprf/oprf_server
 disco/mobile_psi_cpp/build-mac/droidCrypto/relic/include/relic_conf.h
 disco/mobile_psi_cpp/build-mac/droidCrypto/relic/lib/librelic_s.a
-disco/mobile_psi_cpp/droidCrypto/CMakeLists.txt
 SEAL/
 datasets/calibrations/calibration_gowalla_plus_augmented_generated_client_min_fp.csv
 datasets/cyberthreats.py
