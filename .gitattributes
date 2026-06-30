@@ -1,3 +1,11 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
 datasets/*.json filter=lfs diff=lfs merge=lfs -text
 datasets/calibrations/*.json filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_calibration_client_close.json filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_calibration_client_far.json filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_calibration_metadata.txt filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_calibration_server.json filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_protocol_client_close.json filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_protocol_client_far.json filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_protocol_metadata.txt filter=lfs diff=lfs merge=lfs -text
+datasets/acm_dblp_protocol/acm_dblp_protocol_server.json filter=lfs diff=lfs merge=lfs -text
