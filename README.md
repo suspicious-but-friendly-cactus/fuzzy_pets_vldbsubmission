@@ -9,8 +9,8 @@ The active experiment is `./test`; the main function is in `test_fuzzypsi.cpp`.
 
 ## Build the main binary and the SEAL library:
 ```
-git clone -b VLDB_submission https://github.com/andathan/fuzzy_pets.git
-cd fuzzy_pets
+git clone https://github.com/suspicious-but-friendly-cactus/fuzzy_pets_vldbsubmission
+cd fuzzy_pets_vldbsubmission
 python3 -m venv venv  
 source venv/bin/activate 
 sudo apt update 
