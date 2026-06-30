@@ -1,0 +1,18 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/GSL/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/relic/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/relic/src/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/keccak/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/psi/cuckoofilter/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/ot/SimplestOT/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/ot/SimplestOT/ref10/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/psi/oprf/cmake_install.cmake",
+		"/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

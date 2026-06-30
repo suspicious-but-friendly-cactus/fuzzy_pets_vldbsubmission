@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG -arch arm64 -dynamiclib -Wl,-headerpad_max_install_names -o libkeccak.dylib -install_name @rpath/libkeccak.dylib CMakeFiles/keccak.dir/KeccakSpongeWidth1600.c.o CMakeFiles/keccak.dir/KeccakHash.c.o "CMakeFiles/keccak.dir/avx2/KeccakP-1600-AVX2.s.o"
