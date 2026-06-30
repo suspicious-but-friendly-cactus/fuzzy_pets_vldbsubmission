@@ -1,0 +1,80 @@
+[
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/aligned_alloc.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/aligned_alloc.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/aligned_alloc.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/aligned_alloc.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/cpu.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/cpu.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/cpu.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/cpu.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/io.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/io.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/io.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/io.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_pars.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_pars.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_pars.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_pars.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_128_128_21.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_21.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_21.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_128_128_21.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_128_128_23.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_23.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_23.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_128_128_23.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_128_128_32.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_32.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_32.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_128_128_32.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_128_128_192.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_192.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_192.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_128_128_192.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_128_128_208.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_208.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_208.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_128_128_208.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_128_128_287.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_287.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_128_128_287.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_128_128_287.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/lowmc_256_256_537.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_256_256_537.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/lowmc_256_256_537.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/lowmc_256_256_537.c.o"
+},
+{
+  "directory": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc",
+  "command": "/usr/bin/cc -DHAVE_CONFIG_H -DREDUCED_LINEAR_LAYER -DREDUCED_LINEAR_LAYER_NEXT -DWITH_LOWMC_128_128_192 -DWITH_LOWMC_128_128_208 -DWITH_LOWMC_128_128_21 -DWITH_LOWMC_128_128_23 -DWITH_LOWMC_128_128_287 -DWITH_LOWMC_128_128_32 -DWITH_NEON -DWITH_OPT -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/build/droidCrypto/lowmc -I/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc -O3 -DNDEBUG -std=gnu11 -flto=thin -arch arm64 -fPIC -fvisibility=hidden -Wall -Wextra -march=native -mtune=native -O3 -fomit-frame-pointer -o CMakeFiles/lowmc.dir/mzd_additional.c.o -c /Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/mzd_additional.c",
+  "file": "/Users/andreasathanas/Desktop/GitHub/fuzzy_pets/disco/mobile_psi_cpp/droidCrypto/lowmc/mzd_additional.c",
+  "output": "droidCrypto/lowmc/CMakeFiles/lowmc.dir/mzd_additional.c.o"
+}
+]
