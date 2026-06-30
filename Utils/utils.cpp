@@ -34,6 +34,27 @@ using json = nlohmann::json;
 std::string CLIENT_CLOSE_PATH = "datasets/gowalla_client/gowalla_client_close.json";
 std::string CLIENT_FAR_PATH = "datasets/gowalla_client/gowalla_client_far.json";
 
+static size_t portable_rng_index(std::mt19937& rng, size_t exclusive_upper) {
+    if (exclusive_upper == 0) {
+        throw std::runtime_error("portable_rng_index called with empty range");
+    }
+    const uint64_t value = (static_cast<uint64_t>(rng()) << 32) |
+                           static_cast<uint64_t>(rng());
+    return static_cast<size_t>(value % static_cast<uint64_t>(exclusive_upper));
+}
+
+template <typename T>
+static void dataset_shuffle(std::vector<T>& values, std::mt19937& rng) {
+    if (!PORTABLE_DATASET_SAMPLING) {
+        std::shuffle(values.begin(), values.end(), rng);
+        return;
+    }
+    for (size_t i = values.size(); i > 1; --i) {
+        const size_t j = portable_rng_index(rng, i);
+        std::swap(values[i - 1], values[j]);
+    }
+}
+
 size_t count_server_json_entries(const std::string& server_path) {
     std::ifstream in(server_path);
     if (!in) {
@@ -562,7 +583,7 @@ void load_server_from_json(
 
     std::vector<size_t> indices(pool_count);
     std::iota(indices.begin(), indices.end(), 0);
-    std::shuffle(indices.begin(), indices.end(), rng);
+    dataset_shuffle(indices, rng);
 
     const size_t unique_count = std::min(requested_count, pool_count);
     for (size_t i = 0; i < unique_count; i++) {
@@ -628,7 +649,7 @@ void load_server_from_json(
         const size_t random_pool_count = random_append_ids.size();
         std::vector<size_t> random_indices(random_pool_count);
         std::iota(random_indices.begin(), random_indices.end(), 0);
-        std::shuffle(random_indices.begin(), random_indices.end(), rng);
+        dataset_shuffle(random_indices, rng);
 
         const size_t random_unique_count = std::min(extra_count, random_pool_count);
         for (size_t i = 0; i < random_unique_count; ++i) {
@@ -921,7 +942,7 @@ void load_client_from_json(
         // ---- CLOSE ----
         std::vector<int> close_indices(close_pool.size());
         std::iota(close_indices.begin(), close_indices.end(), 0);
-        std::shuffle(close_indices.begin(), close_indices.end(), rng);
+        dataset_shuffle(close_indices, rng);
 
         for (int i = 0; i < target_close; i++) {
             int idx = close_indices[i];
@@ -932,7 +953,7 @@ void load_client_from_json(
         // ---- FAR ----
         std::vector<int> far_indices(far_pool.size());
         std::iota(far_indices.begin(), far_indices.end(), 0);
-        std::shuffle(far_indices.begin(), far_indices.end(), rng);
+        dataset_shuffle(far_indices, rng);
 
         for (int i = 0; i < target_far; i++) {
             int idx = far_indices[i];
@@ -1043,7 +1064,7 @@ void load_client_from_json_for_server(
 
         std::vector<size_t> indices(raw_client_pool.size());
         std::iota(indices.begin(), indices.end(), 0);
-        std::shuffle(indices.begin(), indices.end(), rng);
+        dataset_shuffle(indices, rng);
 
         std::vector<size_t> sampled_indices;
         sampled_indices.reserve(static_cast<size_t>(N));
@@ -1409,7 +1430,7 @@ void load_client_from_json_for_server(
 
         std::vector<size_t> server_order(server_imgs.size());
         std::iota(server_order.begin(), server_order.end(), 0);
-        std::shuffle(server_order.begin(), server_order.end(), rng);
+        dataset_shuffle(server_order, rng);
 
         auto collect_for_server = [&](const std::vector<double>& server,
                                      size_t limit,
@@ -1439,7 +1460,7 @@ void load_client_from_json_for_server(
                 }
             }
 
-            std::shuffle(local_candidates.begin(), local_candidates.end(), rng);
+            dataset_shuffle(local_candidates, rng);
             size_t added = 0;
             for (size_t candidate : local_candidates) {
                 if (selected[candidate]) continue;
@@ -1551,7 +1572,7 @@ void load_client_from_json_for_server(
               << " close_candidate_unique_vectors="
               << unique_close_candidate_vectors.size() << "\n";
 
-    std::shuffle(close_candidates.begin(), close_candidates.end(), rng);
+    dataset_shuffle(close_candidates, rng);
     std::vector<size_t> sampled_close_indices;
     sampled_close_indices.reserve(target_close);
 
@@ -1588,7 +1609,7 @@ void load_client_from_json_for_server(
             far_indices.push_back(i);
         }
     }
-    std::shuffle(far_indices.begin(), far_indices.end(), rng);
+    dataset_shuffle(far_indices, rng);
     std::vector<size_t> sampled_far_indices;
     sampled_far_indices.reserve(target_far);
 
@@ -1692,7 +1713,7 @@ void load_client_from_json(
     int have_close = 0, have_far = 0;
 
     std::vector<std::string> ids = server_ids;
-    std::shuffle(ids.begin(), ids.end(), rng);
+    dataset_shuffle(ids, rng);
     if (ids.empty()) throw std::runtime_error("server_ids is empty; cannot build Client");
 
     auto pick_from_list = [&](const json& lst) -> std::vector<int> {

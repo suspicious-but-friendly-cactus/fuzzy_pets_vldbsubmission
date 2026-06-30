@@ -126,7 +126,7 @@ static int run_cuckoo_lkw_calibration_once(
              << " w=" << candidate.w
              << "\n" << std::flush;
 
-        E2LSH lsh(dim, candidate.L, candidate.k, candidate.w);
+        E2LSH lsh(dim, candidate.L, candidate.k, candidate.w, 42, PORTABLE_LSH);
         CuckooFilter cuckoo(filter_size, 4, 5, CUCKOO_POWER_OF_TWO_BUCKETS);
 
         bool aborted = false;

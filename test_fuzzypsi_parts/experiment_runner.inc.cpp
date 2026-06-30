@@ -1,3 +1,162 @@
+static uint64_t debug_mix64(uint64_t x) {
+    x += 0x9e3779b97f4a7c15ULL;
+    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
+    x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
+    return x ^ (x >> 31);
+}
+
+static void debug_hash_combine(uint64_t& h, uint64_t value) {
+    h ^= debug_mix64(value + 0x9e3779b97f4a7c15ULL + (h << 6) + (h >> 2));
+}
+
+static uint64_t debug_hash_string(const string& value) {
+    uint64_t h = 0xcbf29ce484222325ULL;
+    for (unsigned char c : value) {
+        h ^= static_cast<uint64_t>(c);
+        h *= 0x100000001b3ULL;
+    }
+    return h;
+}
+
+static uint64_t debug_hash_double(double value) {
+    uint64_t bits = 0;
+    std::memcpy(&bits, &value, sizeof(bits));
+    return bits;
+}
+
+static uint64_t debug_hash_row(const vector<double>& row) {
+    uint64_t h = 0x6a09e667f3bcc909ULL;
+    debug_hash_combine(h, static_cast<uint64_t>(row.size()));
+    for (double value : row) {
+        debug_hash_combine(h, debug_hash_double(value));
+    }
+    return h;
+}
+
+static uint64_t debug_hash_rows(const vector<vector<double>>& rows) {
+    uint64_t h = 0xbb67ae8584caa73bULL;
+    debug_hash_combine(h, static_cast<uint64_t>(rows.size()));
+    for (size_t i = 0; i < rows.size(); ++i) {
+        debug_hash_combine(h, static_cast<uint64_t>(i));
+        debug_hash_combine(h, debug_hash_row(rows[i]));
+    }
+    return h;
+}
+
+static uint64_t debug_hash_ids(const vector<string>& ids) {
+    uint64_t h = 0x3c6ef372fe94f82bULL;
+    debug_hash_combine(h, static_cast<uint64_t>(ids.size()));
+    for (size_t i = 0; i < ids.size(); ++i) {
+        debug_hash_combine(h, static_cast<uint64_t>(i));
+        debug_hash_combine(h, debug_hash_string(ids[i]));
+    }
+    return h;
+}
+
+static uint64_t debug_hash_labels(const vector<bool>& labels) {
+    uint64_t h = 0xa54ff53a5f1d36f1ULL;
+    debug_hash_combine(h, static_cast<uint64_t>(labels.size()));
+    for (size_t i = 0; i < labels.size(); ++i) {
+        debug_hash_combine(h, static_cast<uint64_t>(i));
+        debug_hash_combine(h, labels[i] ? 1ULL : 0ULL);
+    }
+    return h;
+}
+
+static void debug_print_sample_signature(
+    uint32_t run_seed,
+    int client_size,
+    int run_index,
+    const vector<string>& server_ids,
+    const vector<vector<double>>& server_imgs,
+    const vector<vector<double>>& client_imgs,
+    const vector<bool>& client_is_close
+) {
+    if (!DEBUG_PHASES) {
+        return;
+    }
+
+    size_t close_count = 0;
+    for (bool is_close : client_is_close) {
+        if (is_close) {
+            ++close_count;
+        }
+    }
+    const size_t far_count = client_is_close.size() - close_count;
+
+    std::ios_base::fmtflags old_flags = cout.flags();
+    cout << "[debug sample] run=" << (run_index + 1)
+         << " seed=" << run_seed
+         << " requested_client_size=" << client_size
+         << " server_count=" << server_imgs.size()
+         << " server_rows_hash=0x" << std::hex << debug_hash_rows(server_imgs)
+         << " server_ids_hash=0x" << debug_hash_ids(server_ids)
+         << std::dec << "\n";
+    cout << "[debug sample] client_count=" << client_imgs.size()
+         << " close=" << close_count
+         << " far=" << far_count
+         << " client_rows_hash=0x" << std::hex << debug_hash_rows(client_imgs)
+         << " client_labels_hash=0x" << debug_hash_labels(client_is_close)
+         << std::dec << "\n";
+
+    const size_t server_preview = std::min<size_t>(5, server_imgs.size());
+    for (size_t i = 0; i < server_preview; ++i) {
+        cout << "[debug sample server " << i << "] id="
+             << (i < server_ids.size() ? server_ids[i] : string("(missing)"))
+             << " row_hash=0x" << std::hex << debug_hash_row(server_imgs[i])
+             << std::dec << "\n";
+    }
+
+    const size_t client_preview = std::min<size_t>(10, client_imgs.size());
+    for (size_t i = 0; i < client_preview; ++i) {
+        cout << "[debug sample client " << i << "] label="
+             << (i < client_is_close.size() && client_is_close[i] ? "close" : "far")
+             << " row_hash=0x" << std::hex << debug_hash_row(client_imgs[i])
+             << std::dec << "\n";
+    }
+    cout.flags(old_flags);
+    cout << std::flush;
+}
+
+static uint64_t debug_hash_lsh_keys(
+    const vector<vector<double>>& rows,
+    E2LSH& lsh,
+    size_t limit
+) {
+    uint64_t h = 0x510e527fade682d1ULL;
+    const size_t count = std::min(limit, rows.size());
+    debug_hash_combine(h, static_cast<uint64_t>(count));
+    for (size_t i = 0; i < count; ++i) {
+        const auto keys = lsh.table_keys(rows[i]);
+        debug_hash_combine(h, static_cast<uint64_t>(i));
+        debug_hash_combine(h, static_cast<uint64_t>(keys.size()));
+        for (uint64_t key : keys) {
+            debug_hash_combine(h, key);
+        }
+    }
+    return h;
+}
+
+static void debug_print_lsh_signature(
+    E2LSH& lsh,
+    const vector<vector<double>>& server_imgs,
+    const vector<vector<double>>& client_imgs
+) {
+    if (!DEBUG_PHASES) {
+        return;
+    }
+
+    std::ios_base::fmtflags old_flags = cout.flags();
+    cout << "[debug lsh] portable_lsh=" << (PORTABLE_LSH ? "true" : "false")
+         << " server_first10_keys_hash=0x" << std::hex
+         << debug_hash_lsh_keys(server_imgs, lsh, 10)
+         << " client_first10_keys_hash=0x"
+         << debug_hash_lsh_keys(client_imgs, lsh, 10)
+         << std::dec << "\n";
+    cout.flags(old_flags);
+    cout << std::flush;
+}
+
 //Our fuzzy PSI Protocol
 int fuzzypsi(
     int L,
@@ -19,7 +178,7 @@ int fuzzypsi(
 
 
      //initialize a family of L E2LSH functions
-    E2LSH lsh(dim, L, k, w);
+    E2LSH lsh(dim, L, k, w, 42, PORTABLE_LSH);
 
 
     //initialize filters
@@ -167,6 +326,17 @@ int fuzzypsi(
             }
             */
            }
+
+            debug_print_sample_signature(
+                run_seed,
+                client_size,
+                run,
+                server_ids,
+                server_imgs,
+                client_imgs,
+                client_is_close
+            );
+            debug_print_lsh_signature(lsh, server_imgs, client_imgs);
 
             PHASE_LOG << "[phase] Dataset ready server=" << server_imgs.size()
                  << " client=" << client_imgs.size()

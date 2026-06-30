@@ -729,7 +729,7 @@ static int fuzzypsi_cardinality_only(
         3,
         ca_ceil_log2(ca_bloom_hash_count) + ca_ceil_log2(membership_terms_per_item)
     );
-    E2LSH lsh(dim, L, K, w);
+    E2LSH lsh(dim, L, K, w, 42, PORTABLE_LSH);
 
     cout << "[CA_only] PiCardSum(X,Y) with X=Client, Y=Server"
          << " L=" << L
@@ -1660,7 +1660,7 @@ static int fuzzypsi_cardinality_only_cuckoo(
         3,
         ca_ceil_log2(CA_CUCKOO_TAG_HASHES) + 1 + ca_ceil_log2(membership_terms_per_item)
     );
-    E2LSH lsh(dim, L, K, w);
+    E2LSH lsh(dim, L, K, w, 42, PORTABLE_LSH);
 
     cout << "[CA_only] Cuckoo fuzzy cardinality with X=Client, Y=Server"
          << " L=" << L

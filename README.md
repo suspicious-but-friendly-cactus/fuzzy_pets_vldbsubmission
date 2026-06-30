@@ -17,6 +17,7 @@ sudo apt update
 pip install -r requirements.txt
 sudo apt install nlohmann-json3-dev
 sudo apt install git-lfs
+sudo apt install default-jdk
 git clone https://github.com/microsoft/SEAL.git  
 cd SEAL  
 cmake -S . -B build

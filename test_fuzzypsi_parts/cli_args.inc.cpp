@@ -334,6 +334,7 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
                        has_flag(argc, argv, "--pir_batchpir") ||
                        has_flag(argc, argv, "--use_pir_batchpir");
     if (db_preset == "acm_dblp" &&
+        !requested_calibrate_lkw &&
         !USE_PIR_DOUBLE &&
         !USE_PIR_SINGLE &&
         !USE_PIR_BATCHPIR) {
@@ -343,7 +344,7 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
     if (!parse_oprf_config(argc, argv)) {
         return false;
     }
-    if (db_preset == "acm_dblp" && !USE_OPRF) {
+    if (db_preset == "acm_dblp" && !requested_calibrate_lkw && !USE_OPRF) {
         USE_OPRF = true;
         disco_oprf_set_mechanism("GCAES");
     }
@@ -420,6 +421,12 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
         APPEND_RANDOM_SERVER = false;
         APPEND_AUGMENTED_SERVER = false;
     }
+    PORTABLE_DATASET_SAMPLING =
+        has_flag(argc, argv, "--portable_sampling") ||
+        has_flag(argc, argv, "--portable_dataset_sampling");
+    PORTABLE_LSH =
+        has_flag(argc, argv, "--portable_lsh") ||
+        has_flag(argc, argv, "--portable_e2lsh");
     if (has_flag(argc, argv, "--pir_single_prebuild_shards")) {
         PIR_SINGLE_PREBUILD_SHARDS = true;
     }

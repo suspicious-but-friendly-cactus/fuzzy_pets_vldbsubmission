@@ -8,7 +8,7 @@
 
 class E2LSH {
 public:
-    E2LSH(int dim_, int L_, int k_, double w_, uint64_t seed = 42)
+    E2LSH(int dim_, int L_, int k_, double w_, uint64_t seed = 42, bool portable_rng = false)
         : dim(dim_), L(L_), k(k_), w(w_),
           A(L_, std::vector<std::vector<double>>(k_, std::vector<double>(dim_))),
           B(L_, std::vector<double>(k_))
@@ -18,15 +18,26 @@ public:
         }
 
         std::mt19937_64 gen(seed);
-        std::normal_distribution<double> gaussian(0.0, 1.0);
-        std::uniform_real_distribution<double> uniform(0.0, w);
-
-        for (int l = 0; l < L; ++l) {
-            for (int i = 0; i < k; ++i) {
-                for (int j = 0; j < dim; ++j) {
-                    A[l][i][j] = gaussian(gen);
+        if (portable_rng) {
+            for (int l = 0; l < L; ++l) {
+                for (int i = 0; i < k; ++i) {
+                    for (int j = 0; j < dim; ++j) {
+                        A[l][i][j] = portable_gaussian(gen);
+                    }
+                    B[l][i] = portable_uniform(gen) * w;
                 }
-                B[l][i] = uniform(gen);
+            }
+        } else {
+            std::normal_distribution<double> gaussian(0.0, 1.0);
+            std::uniform_real_distribution<double> uniform(0.0, w);
+
+            for (int l = 0; l < L; ++l) {
+                for (int i = 0; i < k; ++i) {
+                    for (int j = 0; j < dim; ++j) {
+                        A[l][i][j] = gaussian(gen);
+                    }
+                    B[l][i] = uniform(gen);
+                }
             }
         }
     }
@@ -105,6 +116,19 @@ private:
         x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
         x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
         return x ^ (x >> 31);
+    }
+
+    static double portable_uniform(std::mt19937_64& gen) {
+        static constexpr double denom = 9007199254740992.0; // 2^53
+        const uint64_t bits = gen() >> 11;
+        return (static_cast<double>(bits) + 0.5) / denom;
+    }
+
+    static double portable_gaussian(std::mt19937_64& gen) {
+        const double u1 = portable_uniform(gen);
+        const double u2 = portable_uniform(gen);
+        static constexpr double two_pi = 6.283185307179586476925286766559;
+        return std::sqrt(-2.0 * std::log(u1)) * std::cos(two_pi * u2);
     }
 
     int dim;
