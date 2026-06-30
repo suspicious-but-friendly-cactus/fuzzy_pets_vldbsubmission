@@ -173,13 +173,14 @@ Run ACM-DBLP for `|Client|=100` only:
   --num_runs=1 \
   --db=acm_dblp \
   --cuckoo_pow2_buckets \
-  --L=12 \
-  --k=10 \
-  --w=3 \
+  --L=6 \
+  --k=16 \
+  --w=7 \
   --server_size=2616 \
-  --client_size=100 \
+  --client_size=128 \
   --filter_size=41760 \
-  --pir_batchpir_batch_size=100
+  --pir_batchpir_batch_size=128 \
+  --portable_sampling --portable_lsh
 ```
 
 
