@@ -9,6 +9,8 @@ std::string MODE = "location";
 
 size_t filter_size;
 int N, CLIENT_SIZE_SEARCH, dim;
+int L, k;
+double w;
 int DATASET_SEED = 1;
 std::vector<int> CLIENT_SIZES_LIST;
 std::vector<size_t> FILTER_SIZE_SWEEP;
@@ -290,18 +292,23 @@ void init_config() {
         };
 
     } else if (MODE == "recordlinkage") {
-        filter_size = 16'384;
+        filter_size = 41'760;
         N = 2616;
-        CLIENT_SIZE_SEARCH = 50;
+        CLIENT_SIZE_SEARCH = 100;
         dim = 28;
 
-        CLIENT_SIZES_LIST = {50};
+        CLIENT_SIZES_LIST = {100};
         FILTER_SIZE_SWEEP = {
             8'192ULL,
             16'384ULL,
             32'768ULL,
             65'536ULL
         };
+        L = 12;
+        k = 10;
+        w = 3;
+        PIR_BATCHPIR_BATCH_SIZE = 100;
+        CUCKOO_POWER_OF_TWO_BUCKETS = true;
         L_vals = {1, 3, 5, 7, 10, 15, 20, 25, 30};
         k_vals = {1, 2, 3, 5, 7, 10, 15, 20};
         w_vals = {0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 3, 4, 5, 7, 10};
@@ -376,9 +383,6 @@ double DISTRIBUTION_SERVER_NOISE_SCALE = 1.0;
 std::string APPEND_RANDOM_SERVER_PATH = DATASET_DIR + "/server_random.json";
 std::string RAW_CLIENT_PATH = DATASET_DIR + "/client.json";
 
-int L, k;
-double w;
-
 static bool read_server_n_from_metadata(const string& path, int& out) {
     ifstream in(path);
     if (!in) return false;
@@ -435,11 +439,11 @@ static bool apply_db_preset(const string& db) {
     if (db == "acm_dblp" || db == "dblp_acm" || db == "acm_dplp") {
         MODE = "recordlinkage";
         db_preset = "acm_dblp";
-        server_path = dataset_path("acm_dblp_protocol/server.json");
+        server_path = dataset_path("calibrations/acm_dblp_protocol_server.json");
         client_path = dataset_path("acm_dblp_protocol/client.json");
-        CLIENT_CLOSE_PATH = dataset_path("acm_dblp_protocol/client_close.json");
-        CLIENT_FAR_PATH = dataset_path("acm_dblp_protocol/client_far.json");
-        loc_metadata_path = dataset_path("acm_dblp_protocol/metadata.txt");
+        CLIENT_CLOSE_PATH = dataset_path("calibrations/acm_dblp_protocol_client_close.json");
+        CLIENT_FAR_PATH = dataset_path("calibrations/acm_dblp_protocol_client_far.json");
+        loc_metadata_path = dataset_path("calibrations/acm_dblp_protocol_metadata.txt");
         return true;
     }
 

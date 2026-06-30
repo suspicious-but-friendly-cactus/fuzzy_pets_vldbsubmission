@@ -333,9 +333,19 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
                        has_flag(argc, argv, "--PIR_batchpir") ||
                        has_flag(argc, argv, "--pir_batchpir") ||
                        has_flag(argc, argv, "--use_pir_batchpir");
+    if (db_preset == "acm_dblp" &&
+        !USE_PIR_DOUBLE &&
+        !USE_PIR_SINGLE &&
+        !USE_PIR_BATCHPIR) {
+        USE_PIR_BATCHPIR = true;
+    }
 
     if (!parse_oprf_config(argc, argv)) {
         return false;
+    }
+    if (db_preset == "acm_dblp" && !USE_OPRF) {
+        USE_OPRF = true;
+        disco_oprf_set_mechanism("GCAES");
     }
 
     const bool ca_no_oprf = has_flag(argc, argv, "--ca_no_oprf") ||
@@ -358,6 +368,9 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
                 has_flag(argc, argv, "--use_batch");
 
     get_string_arg(argc, argv, "--filter=", args.filter);
+    if (db_preset == "acm_dblp" && args.filter.empty()) {
+        args.filter = "Cuckoo";
+    }
     if (args.ca_only && args.filter.empty()) {
         args.filter = "Bloom";
     }
@@ -374,10 +387,11 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
     get_size_arg(argc, argv, "--ca_cuckoo_fp_bits=", CA_CUCKOO_FP_BITS);
     get_size_arg(argc, argv, "--ca_cuckoo_bucket_tag_bits=", CA_CUCKOO_BUCKET_TAG_BITS);
     get_size_arg(argc, argv, "--ca_cuckoo_tag_hashes=", CA_CUCKOO_TAG_HASHES);
-    CUCKOO_POWER_OF_TWO_BUCKETS =
-        has_flag(argc, argv, "--cuckoo_pow2_buckets") ||
+    if (has_flag(argc, argv, "--cuckoo_pow2_buckets") ||
         has_flag(argc, argv, "--cuckoo_power_of_two_buckets") ||
-        has_flag(argc, argv, "--Cuckoo_power_of_two_buckets");
+        has_flag(argc, argv, "--Cuckoo_power_of_two_buckets")) {
+        CUCKOO_POWER_OF_TWO_BUCKETS = true;
+    }
     CA_MATERIALIZE_PIR_DB = has_flag(argc, argv, "--ca_materialize_pir_db") ||
                             has_flag(argc, argv, "--CA_materialize_pir_db");
 
@@ -477,10 +491,11 @@ static bool parse_cli_args(int argc, char* argv[], ParsedCliArgs& args) {
         }
     }
 
+    const bool has_L_arg = get_int_arg(argc, argv, "--L=", L);
+    const bool has_k_arg = get_int_arg(argc, argv, "--k=", k);
+    const bool has_w_arg = get_double_arg(argc, argv, "--w=", w);
     args.has_all_lsh_params =
-        get_int_arg(argc, argv, "--L=", L) &&
-        get_int_arg(argc, argv, "--k=", k) &&
-        get_double_arg(argc, argv, "--w=", w);
+        (has_L_arg && has_k_arg && has_w_arg) || db_preset == "acm_dblp";
 
     return validate_parsed_args(args);
 }
