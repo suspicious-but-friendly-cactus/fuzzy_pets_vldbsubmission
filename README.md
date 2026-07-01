@@ -8,6 +8,8 @@ The active experiment is `./test`; the main function is in `test_fuzzypsi.cpp`.
 # Installation
 
 ## Build the main binary and the SEAL library:
+
+Linux:
 ```
 git clone https://github.com/suspicious-but-friendly-cactus/fuzzy_pets_vldbsubmission
 cd fuzzy_pets_vldbsubmission
@@ -25,6 +27,24 @@ cmake --build build -j$(nproc)
 cd ../
 make clean
 make 
+```
+
+Mac:
+```
+git clone https://github.com/suspicious-but-friendly-cactus/fuzzy_pets_vldbsubmission.git
+cd fuzzy_pets_vldbsubmission
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+brew install nlohmann-json git-lfs openjdk cmake
+git lfs install
+git clone https://github.com/microsoft/SEAL.git
+cd SEAL
+cmake -S . -B build
+cmake --build build -j"$(sysctl -n hw.ncpu)"
+cd ..
+make clean
+make
 ```
 
 ## Build the GCAES server:
